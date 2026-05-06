@@ -1,0 +1,7 @@
+# Vercel (déploiement local)
+.vercel
+
+# OS / éditeurs
+.DS_Store
+Thumbs.db
+*.log

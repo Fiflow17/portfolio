@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LOCO LIMBO OFFICE — 3D Level</title>
+<meta name="description" content="Loco Limbo Office — prototype level design et environment art." />
+<meta property="og:title" content="LOCO LIMBO OFFICE — 3D Level" />
+<meta property="og:description" content="Prototype level design et environment art for Loco Limbo Office." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<link rel="preload" as="image" href="./office_assets/01_cover.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#090c0f;
+  --line:rgba(255,255,255,.08);
+  --text:#eef4f6;
+  --muted:rgba(238,244,246,.62);
+  --accent:#8bff9c;
+  --max:1460px;
+  --radius:24px;
+  --gap:18px;
+  --px:clamp(2rem,5vw,5rem);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  font-family:"DM Sans",sans-serif;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 18% 72%, rgba(54,214,106,.14), transparent 26%),
+    radial-gradient(circle at 76% 18%, rgba(139,255,156,.12), transparent 22%),
+    linear-gradient(180deg, #0a0d10 0%, #090c0f 100%);
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{
+  outline:2px solid var(--accent, var(--ac, #fff));
+  outline-offset:2px;
+  border-radius:6px;
+}
+
+.shell{width:100%;max-width:none;margin:0 auto;padding:88px var(--px) 60px}
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  backdrop-filter:blur(16px);
+  background:rgba(10,10,10,.92);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  min-height:58px;
+  padding:1rem var(--px);
+}
+.brand{font-family:"Syne",sans-serif;font-weight:800;font-size:.9rem;line-height:1;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.nav-home-link{font-family:"DM Mono",monospace;font-size:.56rem;line-height:1;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:.4rem;flex-shrink:0}
+.nav-home-link:hover{color:var(--text)}
+
+.hero{
+  border:1px solid var(--line);
+  border-radius:32px;
+  overflow:hidden;
+  position:relative;
+  min-height:520px;
+  margin-bottom:22px;
+  background:
+    radial-gradient(circle at 70% 56%, rgba(54,214,106,.18), transparent 25%),
+    radial-gradient(circle at 18% 82%, rgba(139,255,156,.13), transparent 26%),
+    linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
+}
+.hero::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.026) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size:80px 80px;
+  opacity:.14;
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1;display:block;min-height:520px;padding:48px 44px 34px}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;max-width:1040px;min-height:438px}
+.eyebrow{font-family:"DM Mono",monospace;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+h1{margin:0 0 18px;font-family:"Syne",sans-serif;font-weight:800;line-height:1;letter-spacing:-.035em;font-size:clamp(1.8rem,4.4vw,4rem);white-space:nowrap;text-transform:uppercase}
+.hero p{margin:0 0 26px;max-width:790px;color:var(--muted);font-size:clamp(1rem,1.4vw,1.12rem);line-height:1.6}
+.pills{display:flex;flex-wrap:wrap;gap:12px}
+.pill{border:1px solid rgba(139,255,156,.36);background:rgba(54,214,106,.12);color:#e6ffe9;border-radius:999px;padding:11px 15px;font-family:"DM Mono",monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+
+.section-title{margin:0 0 14px;padding:0 2px;font-family:"Syne",sans-serif;font-size:1.2rem;letter-spacing:-.02em}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.card{position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;isolation:isolate;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012))}
+.card.wide{grid-column:1 / -1}
+.card img{display:block;width:100%;height:auto;object-fit:contain;image-rendering:auto;backface-visibility:hidden;cursor:zoom-in;transition:opacity .25s ease}
+.card:hover img{opacity:.99}
+.frame-index{position:absolute;top:12px;left:12px;z-index:2;padding:7px 9px;border-radius:10px;border:1px solid rgba(255,255,255,.09);background:rgba(8,11,14,.74);font-family:"DM Mono",monospace;font-size:.68rem;letter-spacing:.08em;color:#fff}
+
+.lightbox{position:fixed;inset:0;background:rgba(3,5,6,.94);display:none;align-items:center;justify-content:center;z-index:60;padding:24px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:95vw;max-height:92vh;object-fit:contain;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.close{
+  position:fixed;top:18px;right:24px;
+  width:44px;height:44px;
+  display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:999px;
+  background:rgba(10,10,10,.55);
+  color:#fff;
+  font-size:30px;line-height:1;
+  opacity:.92;
+  cursor:pointer;
+}
+.close:hover{background:rgba(14,14,14,.8)}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .card.wide{grid-column:auto}
+  .topbar{padding:1rem var(--px)}
+  .hero-inner{padding:34px 24px 26px}
+  .hero-copy{min-height:auto}
+  h1{max-width:100%;white-space:normal;overflow-wrap:anywhere;font-size:clamp(1.7rem,7vw,2.8rem);line-height:.95}
+}
+@media (max-width:680px){
+  .shell{padding-top:82px}
+  .hero-inner{padding:28px 18px 22px}
+  .eyebrow{font-size:.62rem;letter-spacing:.1em}
+  h1{font-size:clamp(1.45rem,9vw,2.1rem);letter-spacing:-.02em;line-height:.96}
+  .hero p{font-size:.95rem;line-height:1.52}
+  .pills{gap:9px}
+  .pill{padding:10px 12px;font-size:.64rem}
+}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="topbar">
+    <div class="brand">FB</div>
+    <a href="./Homepage_v2.html" class="nav-home-link" aria-label="Back to portfolio">← Back</a>
+  </header>
+
+  <section class="hero" id="overview">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">Portfolio · 3D Assets / Level Design</div>
+        <h1>LOCO LIMBO OFFICE</h1>
+        <p>Prototype office level focused on storytelling spaces, environmental composition, and stylized sci-fi art direction for Loco Limbo.</p>
+        <div class="pills">
+          <span class="pill">Prototype Game</span>
+          <span class="pill">Level Design</span>
+          <span class="pill">Environment Art</span>
+          <span class="pill">Office Level</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <h2 class="section-title" id="gallery">Selected Renders</h2>
+  <section class="grid">
+    <article class="card wide"><span class="frame-index">01</span><img class="zoomable" alt="Loco Limbo Office cover" src="./office_assets/01_cover.jpg"/></article>
+    <article class="card"><span class="frame-index">02</span><img class="zoomable" alt="Office render 02" src="./office_assets/02.jpg"/></article>
+    <article class="card"><span class="frame-index">03</span><img class="zoomable" alt="Office render 03" src="./office_assets/03.jpg"/></article>
+    <article class="card"><span class="frame-index">04</span><img class="zoomable" alt="Office render 04" src="./office_assets/04.jpg"/></article>
+    <article class="card"><span class="frame-index">05</span><img class="zoomable" alt="Office render 05" src="./office_assets/05.jpg"/></article>
+    <article class="card"><span class="frame-index">06</span><img class="zoomable" alt="Office render 06" src="./office_assets/06.jpg"/></article>
+    <article class="card"><span class="frame-index">07</span><img class="zoomable" alt="Office render 07" src="./office_assets/07.jpg"/></article>
+    <article class="card"><span class="frame-index">08</span><img class="zoomable" alt="Office render 08" src="./office_assets/08.jpg"/></article>
+    <article class="card"><span class="frame-index">09</span><img class="zoomable" alt="Office render 09" src="./office_assets/09.jpg"/></article>
+    <article class="card"><span class="frame-index">10</span><img class="zoomable" alt="Office render 10" src="./office_assets/10.jpg"/></article>
+    <article class="card"><span class="frame-index">11</span><img class="zoomable" alt="Office render 11" src="./office_assets/11.jpg"/></article>
+    <article class="card"><span class="frame-index">12</span><img class="zoomable" alt="Office render 12" src="./office_assets/12.jpg"/></article>
+    <article class="card"><span class="frame-index">13</span><img class="zoomable" alt="Office render 13" src="./office_assets/13.jpg"/></article>
+    <article class="card"><span class="frame-index">14</span><img class="zoomable" alt="Office render 14" src="./office_assets/14.jpg"/></article>
+    <article class="card"><span class="frame-index">15</span><img class="zoomable" alt="Office render 15" src="./office_assets/15.jpg"/></article>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button type="button" class="close" id="lightboxClose" aria-label="Close preview">&times;</button>
+  <img id="lightboxImage" src="" alt=""/>
+</div>
+<script>
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+const lightboxClose = document.getElementById('lightboxClose');
+
+function openLightbox(img){
+  lightboxImage.src = img.src;
+  lightboxImage.alt = img.alt || 'Preview image';
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  lightboxClose.focus();
+}
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  lightboxImage.src = '';
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.card img').forEach((img, idx) => {
+  img.loading = idx === 0 ? 'eager' : 'lazy';
+  img.fetchPriority = idx === 0 ? 'high' : 'auto';
+  img.decoding = 'async';
+  img.addEventListener('click', () => openLightbox(img));
+});
+lightboxImage.addEventListener('click', (e) => e.stopPropagation());
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
