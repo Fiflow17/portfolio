@@ -5,12 +5,25 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": false
-    }
+    },
+    { "source": "/Homepage_v2.html", "destination": "/", "permanent": true },
+    { "source": "/Etude_de_cas_ProjectTower.html", "destination": "/case-study-project-tower.html", "permanent": true },
+    { "source": "/Etude_de_cas_SamuraiFlash.html", "destination": "/case-study-samurai-flash.html", "permanent": true },
+    { "source": "/Etude_de_cas_Mocapflow.html", "destination": "/case-study-mocapflow.html", "permanent": true },
+    { "source": "/GUI_Kaiju.html", "destination": "/gui-kaiju.html", "permanent": true },
+    { "source": "/GUI_Extract.html", "destination": "/gui-extract.html", "permanent": true },
+    { "source": "/GUI_Battle_Royale.html", "destination": "/gui-battle-royale.html", "permanent": true },
+    { "source": "/GUI_HyperCasual.html", "destination": "/gui-hyper-casual.html", "permanent": true },
+    { "source": "/Loco_Limbo_museum_level.html", "destination": "/loco-limbo-museum.html", "permanent": true },
+    { "source": "/Loco_Limbo_office_level.html", "destination": "/loco-limbo-office.html", "permanent": true },
+    { "source": "/Loco_Limbo_origin_lab_level.html", "destination": "/loco-limbo-origin-lab.html", "permanent": true },
+    { "source": "/FunnySpaceBase_MedicalCenter.html", "destination": "/funny-space-base-medical-center.html", "permanent": true },
+    { "source": "/FunnySpaceBase_Hangar.html", "destination": "/funny-space-base-hangar.html", "permanent": true }
   ],
   "rewrites": [
     {
       "source": "/",
-      "destination": "/Homepage_v2.html"
+      "destination": "/index.html"
     }
   ],
   "headers": [
